@@ -13,12 +13,14 @@ int n_user;									//number of users
 
 int bet[N_MAX_USER];						//players' betting
 
+
+
 int configUser(){
 	
 	do
 	{
 	printf("Input the number of players (MAX:5) : ");
-	scanf("%d",&n_user);
+	n_user=getIntegerInput();
 	
 	if(n_user>5)
 		printf("Too many player!\n");
@@ -38,7 +40,7 @@ int betDollar(void) {
 	do{
 		
 	printf("  -> your betting (total:$%d) :$ ",dollar[0]);
-	scanf("%d",&bet[0]);
+	bet[0]=getIntegerInput();
 	
 	if(bet[0]<0)
 		printf("  -> invald input for betting ($%d)\n",bet[0]);
