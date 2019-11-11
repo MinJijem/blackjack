@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define N_DOLLAR			50
 
@@ -7,10 +8,10 @@
 
 
 
-int dollar[N_MAX_USER];
+int dollar[N_MAX_USER];						//players' money
 int n_user;									//number of users
 
-int bet[N_MAX_USER];
+int bet[N_MAX_USER];						//players' betting
 
 int configUser(){
 	
@@ -29,10 +30,14 @@ int configUser(){
 }
 int betDollar(void) {
 	
-	printf("\n------- BETTING STRP -------\n");
+	int i;
+	int r;
+	
+	printf("\n--------- BETTING STRP ---------\n");
+	//user betting
 	do{
 		
-	printf("  -> your betting (total:$%d) : ",dollar[0]);
+	printf("  -> your betting (total:$%d) :$ ",dollar[0]);
 	scanf("%d",&bet[0]);
 	
 	if(bet[0]<0)
@@ -41,9 +46,13 @@ int betDollar(void) {
 		printf("  -> you only have $%d! bet again\n",dollar[0]);
 	}while(bet[0]<0 || bet[0]>dollar[0]);
 	
-	printf("----------------------------\n");
+	for(i=1;i<n_user;i++) //plaers betting
+	{
+		r=1+rand() % dollar[i];
+		bet[i]=r;
+		printf("  -> player%d bets $%d (out of $%d)\n",i,bet[i],dollar[i]);
+	}
+	
+	printf("--------------------------------\n");
 	
 }
-
-
-
