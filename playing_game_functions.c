@@ -2,26 +2,54 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define N_CARDSET			1
+#define N_CARD				52
 #define N_DOLLAR			50
 
 #define N_MAX_USER			5
 #define N_MAX_BET			5
+#define N_MAX_CARDHOLD		10
+
+//card tray object	
+int CardTray[N_CARDSET*N_CARD];
+int cardnum=-1;								//Cardtray element number
+int cardindex=0;
+
+//player info
+int n_card[N_MAX_USER];						//number of card players have
+int dollar[N_MAX_USER];						//money of player
+int n_user;									//number of player
+				
+//play yard information					
+int cardhold[N_MAX_USER+1][N_MAX_CARDHOLD];	//cards that currently the players hold
+int cardSum[N_MAX_USER+1];					//sum of the cards
+int bet[N_MAX_USER];						//current betting 
+int gameEnd = 0;						    //game end flag
 
 
+//get an integer input from standard input (keyboard)
+//return : input integer value
+//         (-1 is returned if keyboard input was not integer)
+int getIntegerInput(void) {
+    int input, num;
+    
+    num = scanf("%d", &input);
+    fflush(stdin);
+    if (num != 1) //if it fails to get integer
+        input = -1;
+    
+    return input;
+}
 
-int dollar[N_MAX_USER];						//players' money
-int n_user;									//number of users
+//playing game functions -----------------------------
 
-int bet[N_MAX_USER];						//players' betting
-
-
-
+//player settiing
 int configUser(){
 	
 	do
 	{
 	printf("Input the number of players (MAX:5) : ");
-	scanf("%d",&n_user);
+	n_user=getIntegerInput;
 	
 	if(n_user>5)
 		printf("Too many player!\n");
@@ -31,6 +59,7 @@ int configUser(){
 	}while(n_user>5||n_user<1);
 	
 }
+//betting
 int betDollar(void) {
 	
 	int i;
@@ -40,7 +69,7 @@ int betDollar(void) {
 	do{
 		
 	printf("  -> your betting (total:$%d) :$",dollar[0]);
-	scanf("%d",&bet[0]);
+	bet[0]=getIntegerInput;
 	
 	if(bet[0]<0)
 		printf("  -> invald input for betting ($%d)\n",bet[0]);
@@ -58,3 +87,4 @@ int betDollar(void) {
 	printf("--------------------------------\n");
 	
 }
+
