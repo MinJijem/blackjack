@@ -88,3 +88,19 @@ int betDollar(void) {
 	
 }
 
+//ask GO or STAY?
+int getAction(void) {
+	
+	int reply;
+	
+	printf("Action? ( 0 - go , others - stay ) : ");
+	reply=getIntegerInput();
+	
+	if(reply==0)
+		return 0;
+	
+	else
+		return 1;
+	
+}
+

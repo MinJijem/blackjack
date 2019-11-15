@@ -68,7 +68,7 @@ void serverCardPrint()
 
 }
 
-//print card
+//print the card information (e.g. DiaA)
 int	printCard(int Card){
 	
 	if(Card<=13)						//print card shape
