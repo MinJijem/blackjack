@@ -290,16 +290,16 @@ int checkResult()
 		{
 			printf("lose due to overflow!  --> $%d\n",dollar[i]);		//if player have overflow card, player lose
 		}
-		else if(cardSum[i]==21)
+		else if(n_card[i]=2&&cardSum[i]==21)
 		{
-			printf("blackjack! win!  --> $%d\n",dollar[i]);				//if player have blackjack, player win
+			printf("blackjack! win!  --> $%d\n",dollar[i]);				//if player have blackjack, player win				
 		}
 		else if(cardSum[n_user]>21)
 		{
 			dollar[i]+=bet[i];
 			printf("dealer overflow! win!  --> $%d\n",dollar[i]);
 		}
-		else if(cardSum[n_user]==21)
+		else if(cardSum[n_user]==21 && n_card[n_user]==2)
 		{
 			dollar[i]-=bet[i];
 			printf("dealer blackhack! lose  --> $%d\n",dollar[i]);
@@ -437,11 +437,12 @@ int main(int argc, char *argv[]) {
 				printf("DEAD  -> -$%d ($%d)\n",bet[0],dollar[0]);
 				break;
 			}
-			else if(cardSum[0]==21)		//if cardsum = 21, immediately win
+			else if(n_card[0]==2 && cardSum[0]==21)		//if cardsum = 21, immediately win
 			{
 				dollar[0]+=2*bet[0];
 				printf("blackjack!  ->$%d  ($%d)\n",2*bet[0],dollar[0]);
-				break;
+				break;					
+
 			}
 		
 			action=getAction();
@@ -494,7 +495,7 @@ int main(int argc, char *argv[]) {
 					
 					if(gameEnd==1)					//if card ran out of the tray, immediately ENd game
 					{
-						printf("card ran out of the tray! finishing the game\n");
+						printf("\ncard ran out of the tray! finishing the game\n");
 						goto EXIT;
 					}
 					
@@ -502,26 +503,29 @@ int main(int argc, char *argv[]) {
 					n_card[i]++;
 					cardSum[i]=0;			//initialization cardSum
 				}
-					
-				else if(cardSum[i]>=17 && cardSum[i]<21)
-				{
-					printf("stay\n");
-					break;
-				}
-
-				else if(cardSum[i]==21)
+				
+				else if(n_card[i]==2 && cardSum[i]==21)
 				{
 					printf("black jack! ");
 					
 					if(i==n_user)
 						break;
+					
 					else
 					{
 					dollar[i]=dollar[i]+2*bet[i];
 					printf("  -> +$%d  ($%d)\n",2*bet[i],dollar[i]);
 					break;
-					}
+					}						
+
 				}
+					
+				else if(cardSum[i]>=17 && cardSum[i]<=21)
+				{
+					printf("stay\n");
+					break;
+				}
+
 						
 				else if(cardSum[i]>21)
 				{
@@ -554,7 +558,7 @@ int main(int argc, char *argv[]) {
 		{
 			if(dollar[i]==0)
 			{
-			printf("Someone bankrupt  game end!\n");
+			printf("\nSomeone bankrupt  game end!\n");
 			gameEnd=1;
 			break;	
 			}
@@ -574,7 +578,5 @@ int main(int argc, char *argv[]) {
 	}
 	
 	
-
-
 
 
