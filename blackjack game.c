@@ -44,7 +44,7 @@ extern int	printCard(int Card);
 extern int checkResult();
 extern int checkWinner();
 extern int SumCard(int card,int i);
-extern int AcardCalcul(i,k);
+extern int AcardCalcul(int i,int k);
 //-------------------------------------------------
 
 

@@ -46,7 +46,7 @@ int SumCard(int card,int i) {
 }
 
 //card A calculation  
-int AcardCalcul(i,k){
+int AcardCalcul(int i,int k){
 	
 	int j;
 	

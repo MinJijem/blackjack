@@ -4,8 +4,8 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = playing_game_functions.o
-LINKOBJ  = playing_game_functions.o
+OBJ      = playing_game_functions.o card_array_controllers.o print_card.o "blackjack\ game.o" result_funtions.o calculate_function.o
+LINKOBJ  = playing_game_functions.o card_array_controllers.o print_card.o "blackjack game.o" result_funtions.o calculate_function.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -26,3 +26,18 @@ $(BIN): $(OBJ)
 
 playing_game_functions.o: playing_game_functions.c
 	$(CC) -c playing_game_functions.c -o playing_game_functions.o $(CFLAGS)
+
+card_array_controllers.o: card_array_controllers.c
+	$(CC) -c card_array_controllers.c -o card_array_controllers.o $(CFLAGS)
+
+print_card.o: print_card.c
+	$(CC) -c print_card.c -o print_card.o $(CFLAGS)
+
+"blackjack\ game.o": blackjack\ game.c
+	$(CC) -c "blackjack game.c" -o "blackjack game.o" $(CFLAGS)
+
+result_funtions.o: result_funtions.c
+	$(CC) -c result_funtions.c -o result_funtions.o $(CFLAGS)
+
+calculate_function.o: calculate_function.c
+	$(CC) -c calculate_function.c -o calculate_function.o $(CFLAGS)
