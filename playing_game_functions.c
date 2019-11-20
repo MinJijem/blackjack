@@ -10,27 +10,28 @@
 #define N_MAX_BET			5
 #define N_MAX_CARDHOLD		10
 
+
+extern int action;
+
 //card tray object	
-int CardTray[N_CARDSET*N_CARD];
-int cardnum=-1;								//Cardtray element number
-int cardindex=0;
+extern int CardTray[N_CARDSET*N_CARD];
+extern int cardnum;								//Cardtray element number
+extern int cardindex;
 
 //player info
-int n_card[N_MAX_USER];						//number of card players have
-int dollar[N_MAX_USER];						//money of player
-int n_user;									//number of player
+extern int n_card[N_MAX_USER];						//number of card players have
+extern int dollar[N_MAX_USER];						//money of player
+extern int n_user;									//number of player
 				
 //play yard information					
-int cardhold[N_MAX_USER+1][N_MAX_CARDHOLD];	//cards that currently the players hold
-int cardSum[N_MAX_USER+1];					//sum of the cards
-int bet[N_MAX_USER];						//current betting 
-int gameEnd = 0;						    //game end flag
+extern int cardhold[N_MAX_USER+1][N_MAX_CARDHOLD];	//cards that currently the players hold
+extern int cardSum[N_MAX_USER+1];					//sum of the cards
+extern int bet[N_MAX_USER];						//current betting 
+extern int gameEnd;						    //game end flag
 
 
-//get an integer input from standard input (keyboard)
-//return : input integer value
-//         (-1 is returned if keyboard input was not integer)
 int getIntegerInput(void) {
+	
     int input, num;
     
     num = scanf("%d", &input);
@@ -49,7 +50,7 @@ int configUser(){
 	do
 	{
 	printf("Input the number of players (MAX:5) : ");
-	n_user=getIntegerInput;
+	n_user=getIntegerInput();
 	
 	if(n_user>5)
 		printf("Too many player!\n");
@@ -69,7 +70,7 @@ int betDollar(void) {
 	do{
 		
 	printf("  -> your betting (total:$%d) :$",dollar[0]);
-	bet[0]=getIntegerInput;
+	bet[0]=getIntegerInput();
 	
 	if(bet[0]<0)
 		printf("  -> invald input for betting ($%d)\n",bet[0]);

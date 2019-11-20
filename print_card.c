@@ -6,31 +6,26 @@
 #define N_CARD				52
 #define N_DOLLAR			50
 
-
-#define N_MAX_CARDNUM		13
 #define N_MAX_USER			5
-#define N_MAX_CARDHOLD		10
-#define N_MAX_GO			17
 #define N_MAX_BET			5
-
-#define N_MIN_ENDCARD		30
+#define N_MAX_CARDHOLD		10
 
 
 //card tray object	
-int CardTray[N_CARDSET*N_CARD];
-int cardnum=-1;								//Cardtray element number
-int cardindex=0;
+extern int CardTray[N_CARDSET*N_CARD];
+extern int cardnum;								//Cardtray element number
+extern int cardindex;
 
 //player info
-int n_card[N_MAX_USER];						//number of card players have
-int dollar[N_MAX_USER];						//money of player
-int n_user;									//number of player
+extern int n_card[N_MAX_USER];						//number of card players have
+extern int dollar[N_MAX_USER];						//money of player
+extern int n_user;									//number of player
 				
 //play yard information					
-int cardhold[N_MAX_USER+1][N_MAX_CARDHOLD];	//cards that currently the players hold
-int cardSum[N_MAX_USER+1];					//sum of the cards
-int bet[N_MAX_USER];						//current betting 
-int gameEnd = 0;						    //game end flag
+extern int cardhold[N_MAX_USER+1][N_MAX_CARDHOLD];	//cards that currently the players hold
+extern int cardSum[N_MAX_USER+1];					//sum of the cards
+extern int bet[N_MAX_USER];						//current betting 
+extern int gameEnd;						    //game end flag
 
 //  player's initial card print 
 int printCardInitialStatus(int user,int cardcnt)
