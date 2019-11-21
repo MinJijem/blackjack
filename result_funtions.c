@@ -46,7 +46,7 @@ int checkResult()
 		{
 			printf("lose due to overflow!  --> $%d\n",dollar[i]);		//if player have overflow card, player lose
 		}
-		else if(n_card[i]=2&&cardSum[i]==21)
+		else if(n_card[i]== 2&&cardSum[i]==21)
 		{
 			printf("blackjack! win!  --> $%d\n",dollar[i]);				//if player have blackjack, player win				
 		}

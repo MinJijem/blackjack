@@ -37,7 +37,7 @@ int mixCardTray()
 
 	for(i=0;i<N_CARD*N_CARDSET;i++)
 	{	
-		r=1+rand()%N_CARD;
+		r=1+rand()%N_CARD*N_CARDSET;
 		CardTray[i]=r;
 		{
 			for(j=0;j<i;j++)
@@ -49,8 +49,8 @@ int mixCardTray()
 				}
 			}
 		}
-		if(CardTray[i]>=52)					//if cardset>1
-			CardTray[i]=CardTray[i]%N_CARDSET+1;
+		if(CardTray[i]>=53)					//if cardset>1
+			CardTray[i]=CardTray[i]%N_CARDSET;
 	}
 
 }

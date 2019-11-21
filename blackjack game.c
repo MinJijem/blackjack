@@ -29,23 +29,7 @@ int cardSum[N_MAX_USER+1];					//sum of the cards
 int bet[N_MAX_USER];						//current betting 
 int gameEnd = 0;						    //game end flag
 
-//definition functions----------------------------
-extern int getIntegerInput(void);
-extern int mixCardTray();
-extern int configUser();
-extern int betDollar(void);
-extern int getAction(void);
-extern int pullCard(void);
-extern void offerCards(void);
-extern int printCardInitialStatus(int user,int cardcnt);
-extern void printUserCardStatus(int user, int cardcnt);
-extern void serverCardPrint();
-extern int	printCard(int Card);
-extern int checkResult();
-extern int checkWinner();
-extern int SumCard(int card,int i);
-extern int AcardCalcul(int i,int k);
-//-------------------------------------------------
+
 
 
 
@@ -62,12 +46,13 @@ int main(int argc, char *argv[]) {
 	//Game initialization --------
 	//1. players' dollar
 	
-	//2. card tray
 	
 	for(i=0;i<n_user;i++)
 	{
 		dollar[i]=N_DOLLAR; // give players money 
 	}
+	
+	//2. card tray
 	
 		mixCardTray();
 		
@@ -126,6 +111,7 @@ int main(int argc, char *argv[]) {
 				SumCard(cardhold[0][i],0);
 		
 			AcardCalcul(0,n_card[0]);
+			printf("sum : %d  ",cardSum[0]);
 		
 			if(cardSum[0]>21) 			//if cardsum > 21, immediately dead
 			{
@@ -183,6 +169,7 @@ int main(int argc, char *argv[]) {
 					SumCard(cardhold[i][j],i);		//player i's cardSum
 					 
 				 AcardCalcul(i,n_card[i]);
+				 printf(" sum : %d  ",cardSum[i]);
 				 
 				if(cardSum[i]<17)
 				{
@@ -226,7 +213,7 @@ int main(int argc, char *argv[]) {
 				else if(cardSum[i]>21)
 				{
 					
-					printf("DEAD (sum:%d)",cardSum[i]);
+					printf("DEAD ");
 					if(i==n_user)
 						break;
 					else

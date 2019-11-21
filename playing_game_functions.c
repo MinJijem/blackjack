@@ -49,10 +49,10 @@ int configUser(){
 	
 	do
 	{
-	printf("Input the number of players (MAX:5) : ");
+	printf("Input the number of players (MAX:%d) : ",N_MAX_USER);
 	n_user=getIntegerInput();
 	
-	if(n_user>5)
+	if(n_user>N_MAX_USER)
 		printf("Too many player!\n");
 	else if(n_user<1)
 		printf("invalid onput players!\n");
